@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spesial Untuk Rabiah ✨</title>
+    <!-- Google Fonts & Canvas Confetti -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            /* Tema Warna Matcha Cream & Sage Green Estetik */
+            background-color: #2b3a29;
+            background-image: 
+                radial-gradient(#84a98c 1px, transparent 1px),
+                radial-gradient(#52796f 1px, #2b3a29 1px);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+            color: #f4f3ee;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Elemen Dekorasi Melayang di Background */
+        .decor-item {
+            position: absolute;
+            font-size: 28px;
+            opacity: 0.25;
+            pointer-events: none;
+            animation: float 6s ease-in-out infinite;
+        }
+        .d1 { top: 8%; left: 10%; animation-delay: 0s; }
+        .d2 { top: 15%; right: 12%; animation-delay: 1.5s; }
+        .d3 { bottom: 12%; left: 8%; animation-delay: 3s; }
+        .d4 { bottom: 10%; right: 10%; animation-delay: 4.5s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(10deg); }
+        }
+
+        main {
+            width: 100%;
+            max-width: 400px;
+            height: 100vh;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 5;
+        }
+
+        section {
+            position: absolute;
+            width: 88%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            transform: scale(0.9);
+            background: rgba(43, 58, 41, 0.85);
+            backdrop-filter: blur(8px);
+            padding: 25px 20px;
+            border-radius: 24px;
+            border: 2px solid #84a98c;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        section.active {
+            opacity: 1;
+            pointer-events: auto;
+            transform: scale(1);
+        }
+
+        /* Style Kado */
+        .gift-box {
+            font-size: 80px;
+            cursor: pointer;
+            animation: bounce 1.5s infinite;
+            margin-bottom: 20px;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        /* Tombol Warna Matcha & Maskot Capybara */
+        .btn-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            width: 100%;
+            justify-content: center;
+            position: relative;
+            min-height: 60px;
+        }
+
+        button {
+            padding: 12px 22px;
+            border: none;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: transform 0.2s ease, background-color 0.3s ease;
+        }
+
+        .btn-capy {
+            background-color: #a3b18a;
+            color: #192318;
+            box-shadow: 0 4px 15px rgba(163, 177, 138, 0.4);
+        }
+        .btn-capy:hover {
+            background-color: #cbd5e1;
+            transform: translateY(-2px);
+        }
+
+        .btn-capy .capy-icon {
+            font-size: 18px;
+            transition: transform 0.3s ease;
+        }
+        .btn-capy:hover .capy-icon {
+            transform: scale(1.3) rotate(-10deg);
+        }
+
+        .btn-dark {
+            background-color: #3a4a38;
+            color: #f4f3ee;
+            border: 1px solid #52796f;
+        }
+
+        /* Kue & Lilin */
+        .cake {
+            font-size: 70px;
+            margin-bottom: 15px;
+        }
+
+        /* Gallery Grid Foto */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            width: 100%;
+            margin: 15px 0;
+        }
+        .gallery-grid img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 16px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            border: 2px solid #a3b18a;
+        }
+
+        /* Video Container */
+        video {
+            width: 100%;
+            border-radius: 16px;
+            margin-top: 15px;
+            outline: none;
+            border: 2px solid #a3b18a;
+        }
+
+        h1 {
+            font-size: 22px;
+            margin-bottom: 5px;
+            color: #e9edc9;
+        }
+        p {
+            font-size: 14px;
+            color: #dad7cd;
+            line-height: 1.5;
+        }
+
+        /* Efek Teks Hujan "Kenapa" */
+        .rain-text {
+            position: fixed;
+            top: -30px;
+            color: #ff9999;
+            font-weight: bold;
+            font-size: 18px;
+            pointer-events: none;
+            z-index: 99;
+            animation: fall linear forwards;
+        }
+        @keyframes fall {
+            to {
+                transform: translateY(105vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Lagun Happy Birthday Background -->
+    <audio id="hbd-music" loop>
+        <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73511.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Hiasan Background Aesthetic Matcha -->
+    <div class="decor-item d1">🍵</div>
+    <div class="decor-item d2">🍃</div>
+    <div class="decor-item d3">🧋</div>
+    <div class="decor-item d4">✨</div>
+
+    <main>
+        <!-- Slide 1: Kado -->
+        <section id="slide-1" class="active">
+            <p style="margin-bottom: 10px; font-size: 16px;">Ada kejutan untuk <span id="nama-target" style="font-weight:700; color:#e9edc9;">Rabiah</span> 🍵</p>
+            <div class="gift-box" onclick="nextSlide(2)">🎁</div>
+            <p style="font-size: 12px; color: #a3b18a;">Ketuk kadonya untuk membuka</p>
+        </section>
+
+        <!-- Slide 2: Pertanyaan Kue & Tombol Usil -->
+        <section id="slide-2">
+            <h1>Pertanyaan Penting!</h1>
+            <p style="margin: 15px 0;">Mau kue tidaaa?? 🍰</p>
+            <p id="pesan-tolak" style="color: #ffb4a2; font-size: 13px; min-height: 20px; font-weight: 600;"></p>
+            <div class="btn-group">
+                <button class="btn-capy" id="btn-mau" onmouseover="pindahMau()" onclick="klikMau()">
+                    Mau banget! <span class="capy-icon">🦫</span>
+                </button>
+                <button class="btn-dark" id="btn-enggak" onclick="klikEnggak()">Enggak</button>
+            </div>
+        </section>
+
+        <!-- Slide 3: Tiup Lilin -->
+        <section id="slide-3">
+            <h1>Buat Permintaan Dulu</h1>
+            <p style="margin-bottom: 15px;">Pejamkan mata sebentar, lalu klik tombol di bawah untuk meniup lilin.</p>
+            <div class="cake" id="emoji-kue">🎂</div>
+            <button class="btn-capy" id="btn-tiup" onclick="prosesTiupLilin()">
+                Tiup Lilin <span class="capy-icon">🦫🕯️</span>
+            </button>
+        </section>
+
+        <!-- Slide 4: Ucapan Selamat Ulang Tahun -->
+        <section id="slide-4">
+            <p style="font-size: 15px; color: #a3b18a;">Selamat ulang tahun</p>
+            <h1 style="font-size: 24px; font-weight: 700; color: #e9edc9; margin: 3px 0;">Rabiah Al Adawiyah</h1>
+            <p style="font-size: 16px; font-weight: 600; color: #ccd5ae; margin-bottom: 12px;">19 Tahun 🥳</p>
+            
+            <p style="font-size: 13px; line-height: 1.6; background: rgba(163, 177, 138, 0.15); padding: 12px; border-radius: 14px; border: 1px dashed #a3b18a;">
+                HBD to my capybiah💚 semoga menjadi pribadi yang selalu tersenyum dan ceria. Selalu menjadi wanita yang peduli dan empati, dan juga semoga chairul leklek dan ferrari podium yh😹
+            </p>
+
+            <p style="font-size: 12px; font-weight: 600; color: #dad7cd; margin-top: 12px;">
+                Dengan sayang,<br><span style="color: #e9edc9; font-size: 13px;">Bifurcation boy Kemal Ahmad Ramadhan</span>
+            </p>
+
+            <button class="btn-capy" style="margin-top: 15px;" onclick="nextSlide(5)">
+                Galeri Foto <span class="capy-icon">🦫📸</span>
+            </button>
+        </section>
+
+        <!-- Slide 5: Galeri Foto Kenangan -->
+        <section id="slide-5">
+            <h1>Momen Spesial 📸</h1>
+            <p style="font-size: 12px; color: #a3b18a;">Beberapa kenangan indah bersama!</p>
+            
+            <div class="gallery-grid">
+                <!-- Ganti nama file di bawah dengan file foto Anda -->
+                <img src="foto1.jpg" alt="Foto 1">
+                <img src="foto2.jpg" alt="Foto 2">
+                <img src="foto3.jpg" alt="Foto 3">
+                <img src="foto4.jpg" alt="Foto 4">
+            </div>
+
+            <button class="btn-capy" style="margin-top: 10px;" onclick="nextSlide(6)">
+                Pesan Video <span class="capy-icon">🦫💌</span>
+            </button>
+        </section>
+
+        <!-- Slide 6: Video Pesan & Ulangi Kejutan -->
+        <section id="slide-6">
+            <h1>My Message 4 U 🍵💚</h1>
+            <!-- Ganti nama file di bawah dengan file video Anda -->
+            <video controls playsinline>
+                <source src="video.mp4" type="video/mp4">
+                Browser Anda tidak mendukung pemutar video.
+            </video>
+            <p style="font-size: 12px; margin-top: 12px; color: #a3b18a;">Tetap jadi pribadi yang hebat ya! 🌟</p>
+            
+            <!-- Tombol Ulangi Kejutan -->
+            <button class="btn-dark" style="margin-top: 15px;" onclick="ulangiKejutan()">
+                Ulangi Kejutan 🦫🔄
+            </button>
+        </section>
+    </main>
+
+    <script>
+        let currentSlide = 1;
+        let sudahPencetEnggak = false;
+        let langkahTiup = 0;
+
+        function playMusic() {
+            const music = document.getElementById('hbd-music');
+            music.play().catch(e => console.log("Audio autoplays restricted by browser"));
+        }
+
+        function nextSlide(slideNumber) {
+            document.getElementById(`slide-${currentSlide}`).classList.remove('active');
+            currentSlide = slideNumber;
+            document.getElementById(`slide-${currentSlide}`).classList.add('active');
+
+            if (slideNumber === 3) {
+                playMusic();
+            }
+
+            if (slideNumber === 4) {
+                confetti({
+                    particleCount: 130,
+                    spread: 85,
+                    origin: { y: 0.6 },
+                    colors: ['#a3b18a', '#e9edc9', '#ccd5ae', '#ffffff']
+                });
+            }
+        }
+
+        function pindahMau() {
+            if (!sudahPencetEnggak) {
+                const btnMau = document.getElementById('btn-mau');
+                const randomX = (Math.random() - 0.5) * 180;
+                const randomY = (Math.random() - 0.5) * 140;
+                btnMau.style.transform = `translate(${randomX}px, ${randomY}px)`;
+            }
+        }
+
+        function klikEnggak() {
+            sudahPencetEnggak = true;
+            document.getElementById('pesan-tolak').innerText = "Loh kok ngga mau? 🥺";
+            
+            const btnMau = document.getElementById('btn-mau');
+            btnMau.style.transform = 'translate(0px, 0px)';
+            
+            buatHujanKenapa();
+        }
+
+        function klikMau() {
+            if (sudahPencetEnggak) {
+                nextSlide(3);
+            } else {
+                pindahMau();
+            }
+        }
+
+        function buatHujanKenapa() {
+            for (let i = 0; i < 40; i++) {
+                setTimeout(() => {
+                    const el = document.createElement('div');
+                    el.classList.add('rain-text');
+                    el.innerText = 'kenapa???';
+                    el.style.left = Math.random() * 100 + 'vw';
+                    el.style.animationDuration = (Math.random() * 2 + 1.5) + 's';
+                    el.style.fontSize = (Math.random() * 12 + 14) + 'px';
+                    document.body.appendChild(el);
+
+                    setTimeout(() => {
+                        el.remove();
+                    }, 3500);
+                }, i * 80);
+            }
+        }
+
+        function prosesTiupLilin() {
+            playMusic();
+            const btnTiup = document.getElementById('btn-tiup');
+            
+            if (langkahTiup === 0) {
+                btnTiup.innerHTML = 'tiup eyy bukan klik 😆 <span class="capy-icon">🦫</span>';
+                document.getElementById('emoji-kue').innerText = "🍰✨";
+                langkahTiup = 1;
+            } else if (langkahTiup === 1) {
+                nextSlide(4);
+            }
+        }
+
+        function ulangiKejutan() {
+            sudahPencetEnggak = false;
+            langkahTiup = 0;
+            document.getElementById('pesan-tolak').innerText = "";
+            document.getElementById('btn-mau').style.transform = 'translate(0px, 0px)';
+            document.getElementById('btn-tiup').innerHTML = 'Tiup Lilin <span class="capy-icon">🦫🕯️</span>';
+            document.getElementById('emoji-kue').innerText = "🎂";
+            nextSlide(1);
+        }
+    </script>
+</body>
+</html>
